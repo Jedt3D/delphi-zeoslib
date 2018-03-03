@@ -1,0 +1,36 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{E1CE9873-96CA-48CA-AB40-29B8B5F73D98}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiZeosLib.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiZeosLib">
+        <MSBuild Projects="DelphiZeosLib.dproj"/>
+    </Target>
+    <Target Name="DelphiZeosLib:Clean">
+        <MSBuild Projects="DelphiZeosLib.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiZeosLib:Make">
+        <MSBuild Projects="DelphiZeosLib.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiZeosLib"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiZeosLib:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiZeosLib:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
